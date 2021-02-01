@@ -94,20 +94,44 @@ fosc_change <- change %>%
 ################################################################################
 wb <- createWorkbook()
 
-addWorksheet(wb, "Log Dev - Corr")
-writeData(wb, "Log Dev - Corr", corr_log_dev)
+header$add_worksheet(
+  wb, 
+  sheet = "Log Dev - Corr", 
+  data = corr_log_dev,
+  title = "Variables: Log deviation from trend",
+  subtitle = "Statistic: Correlation with gdp")
 
-addWorksheet(wb, "Log Dev - StDev")
-writeData(wb, "Log Dev - StDev", stdev_log_dev)
+header$add_worksheet(
+  wb, 
+  sheet = "Log Dev - StDev", 
+  data = stdev_log_dev,
+  title = "Variables: Log deviation from trend",
+  subtitle = paste0(
+    "Statistics: Standard deviation, ", 
+    "Standard deviation as share of standard deviation of gdp"))
 
-addWorksheet(wb, "Log Dev - FOSC")
-writeData(wb, "Log Dev - FOSC", fosc_log_dev)
+header$add_worksheet(
+  wb, 
+  sheet = "Log Dev - FOSC", 
+  data = fosc_log_dev,
+  title = "Variables: Log deviation from trend",
+  subtitle = "Statistic: First order serial correlation")
 
-addWorksheet(wb, "Change - StDev")
-writeData(wb, "Change - StDev", stdev_change)
+header$add_worksheet(
+  wb, 
+  sheet = "Change - StDev", 
+  data = stdev_change,
+  title = "Variables: Log change",
+  subtitle = paste0(
+    "Statistics: Standard deviation, ", 
+    "Standard deviation as share of standard deviation of gdp"))
 
-addWorksheet(wb, "Change - FOSC")
-writeData(wb, "Change - FOSC", fosc_change)
+header$add_worksheet(
+  wb, 
+  sheet = "Change - FOSC", 
+  data = fosc_change,
+  title = "Variables: Log change",
+  subtitle = "Statistic: First order serial correlation")
 
 saveWorkbook(
   wb, 
