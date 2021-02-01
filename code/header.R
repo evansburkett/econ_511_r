@@ -15,3 +15,11 @@ library(tidyr)
 library(purrr)
 library(mFilter)
 library(openxlsx)
+
+# Create user-defined functions
+header$add_worksheet <- function(wb, sheet, title, subtitle, data) {
+  addWorksheet(wb, sheet)
+  writeData(wb, sheet, startRow = 1, title)
+  writeData(wb, sheet, startRow = 2, subtitle)
+  writeData(wb, sheet, startRow = 4, data)
+}
